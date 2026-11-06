@@ -5,19 +5,15 @@
 #include <chrono>
 #include <thread>
 
-//Estrutura para representar a leitura de um sensor
-
 struct LeituraSensor {
     int idLeitura;
     float temperatura;
     bool statusAlerta;
 };
 
-//Função para simular a leitura do sensor de hardware
 
 float lerTemperaturaHardware() {
   
-    //Simula variação de temperatura entre 20°C e 90°C
   
     return 20.0f + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 70.0f));
 }
@@ -26,7 +22,7 @@ int main() {
     srand(static_cast<unsigned int>(time(0)));
     
     std::vector<LeituraSensor> historico;
-    const float LIMITE_TEMPERATURA = 75.0f; //Limiar de alerta em °C
+    const float LIMITE_TEMPERATURA = 75.0f; 
     const int TOTAL_LEITURAS = 10;
 
     std::cout << "=================================================\n";
@@ -47,11 +43,9 @@ int main() {
             std::cout << "--> [OK: Operacao Normal]\n";
         }
 
-        //Aguarda 1 segundo entre leituras para simular loop em tempo real
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
-    //Resumo final do monitoramento
     std::cout << "\n-------------------------------------------------\n";
     std::cout << "RELATORIO FINAL DE OPERACAO\n";
     std::cout << "-------------------------------------------------\n";
